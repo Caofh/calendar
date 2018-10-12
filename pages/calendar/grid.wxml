@@ -1,0 +1,10 @@
+<template name="grid">
+    <view bindtap="bindGridTap" class="grid {{isSelected?'selected':''}} {{isToday?'ondate':''}} {{isCurrentMonth?'':'gray'}}" data-date="{{date}}" data-i="{{i}}">
+        <view class="grid-inner ">
+            <text class="solar_data">{{solarData}}</text>
+            <text class="lunar_data">{{lunarData}}</text>
+        </view>
+        <image class="vacation_icon" src="../imgs/calendar_rest.png" wx:if="{{holidayStatus==1}}"></image>
+        <image class="vacation_icon" src="../imgs/calendar_work.png" wx:if="{{holidayStatus==2}}"></image>
+    </view>
+</template>

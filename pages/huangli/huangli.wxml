@@ -1,0 +1,103 @@
+<template name="jishiItem">
+    <view class="jishiItemContainer {{isSelected?'jishiSelected':''}}">
+        <view class="jishiItem {{jishi=='吉'?'isJi':''}}">
+            <view class="jishiTimeContainer">
+                <text class="jishiNameText"> {{name}} </text>
+                <text class="jishiTimeText"> {{time}} </text>
+            </view>
+            <text class="jishiText"> {{caishen}} </text>
+            <text class="jishiText"> {{xishen}} </text>
+            <text class="jixiongText"> {{jishi}} </text>
+        </view>
+    </view>
+</template>
+<view class="container">
+    <view class="dateInfo">
+        <text class="year-month">{{gongli}}</text>
+        <text class="dateInfo-date">{{nongli_str}}</text>
+        <text class="dateInfo-nongli">{{nongli}}</text>
+        <text class="dateInfo-nongli">{{ganzhi}}</text>
+    </view>
+    <view class="box">
+        <view class="boxInner">
+            <view class="yijiContainer">
+                <view class="yiContainer">
+                    <image backgroundSize="contain" class="yijiImage" src="http://www.365rili.com/third_cooperation/qqgroup/images/huangli/yi.png"></image>
+                    <text class="yijiText-yi">{{yi}}</text>
+                </view>
+                <view class="jiContainer">
+                    <image backgroundSize="contain" class="yijiImage" src="http://www.365rili.com/third_cooperation/qqgroup/images/huangli/ji.png"></image>
+                    <text class="yijiText-ji">{{ji}}</text>
+                </view>
+            </view>
+            <view class="zhushenContainer">
+                <text class="zhushenTitle">诸神方位</text>
+                <view class="fangweiContainer">
+                    <view class="fangweiColumn">
+                        <text class="fangweiText">喜神-{{xishen}}</text>
+                        <text class="fangweiText">阳贵神-{{yangguishen}}</text>
+                    </view>
+                    <view class="fangweiColumn">
+                        <text class="fangweiText">福神-{{fushen}}</text>
+                        <text class="fangweiText">阴贵神-{{yinguishen}}</text>
+                    </view>
+                    <view class="fangweiColumn">
+                        <text class="fangweiText">财神-{{caishen}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="box">
+        <view class="boxInner">
+            <view class="jishiContainer">
+                <view class="jishiTitleContainer">
+                    <view class="jishiTitleTime">
+                        <text class="jishiTitleTimeText"> 时辰 </text>
+                    </view>
+                    <text class="jishiTitleContent"> 财神 </text>
+                    <text class="jishiTitleContent"> 喜神 </text>
+                    <text class="jishiTitleContent"> 吉时 </text>
+                </view>
+                <template is="jishiItem" data="{{...item}}" wx:for="{{jishiarray}}"></template>
+            </view>
+        </view>
+    </view>
+
+    <view class="box">
+            <view class="boxInner">
+                <view class="xingxiuContainer">
+                    <view class="xingxiuSideContainer">
+                        <view class="xingxiuSideUpContainer">
+                            <text class="zhushenTitle">胎神</text>
+                            <text class="xingxiuText">{{taishen}}</text>
+                        </view>
+                        <view class="xingxiuSideLine"></view>
+                        <view class="xingxiuSideDownContainer">
+                            <text class="zhushenTitle">星宿</text>
+                            <text class="xingxiuText">{{xingxiu}}</text>
+                        </view>
+                    </view>
+                    <view class="xingxiuCenterContainer">
+                        <text class="zhushenTitle">彭祖百忌</text>
+                        <text class="xingxiuText">{{pengzubaiji}}</text>
+                    </view>
+                    <view class="xingxiuSideContainer">
+                        <view class="xingxiuSideUpContainer">
+                            <text class="zhushenTitle">冲煞</text>
+                            <text class="xingxiuText">{{chongsha}}</text>
+                        </view>
+                        <view class="xingxiuSideLine"></view>
+                        <view class="xingxiuSideDownContainer">
+                            <text class="zhushenTitle">五行</text>
+                            <text class="xingxiuText">{{wuxing}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+</view>
+<view bindtap="prevTap" class="buttonLeft"></view>
+<view bindtap="nextTap" class="buttonRight"></view>
+<text bindtap="todayTap" class="todayButton" wx:if="{{notToday}}">今</text>

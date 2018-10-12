@@ -1,0 +1,37 @@
+<view class="wa">
+    <view class="panel limit">
+        <view id="date">{{date}}</view>
+        <view class="limit-main {{limitclass}}">
+            <view class="tip {{limitclass}}">限行尾号</view>
+            <view class="info">
+                <view class="num num1 {{limitclass}}">
+                    <view class="tt"></view>
+                    <view class="tt2">{{number1}}</view>
+                </view>
+                <view class="num num2 {{limitclass}}">
+                    <view class="tt"></view>
+                    <view class="tt2">{{number2}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="location">
+            <view class="location_text">
+                <text>{{city}}</text>
+            </view>
+            <view class="otherInfo">
+					明天 {{tomorrowinfo}}<view class="{{tomorrow1}}"></view>
+                <view class="{{tomorrow2}}"></view>
+					 /  后天 {{afterinfo}}<view class="{{after1}}"></view>
+                <view class="{{after2}}"></view>
+            </view>
+        </view>
+        <view class="detail showContent">
+            <view class="label">
+                <text>尾号限行规则</text>
+            </view>
+            <view class="content">
+                <view>{{rule}}</view>
+            </view>
+        </view>
+    </view>
+</view>

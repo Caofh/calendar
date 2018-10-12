@@ -1,0 +1,72 @@
+<import src="grid.wxml"></import>
+
+<button wx:if="{{!userInfo || !userInfo.nickName}}" class="getAuth" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo"></button>
+<view class="calendar">
+    <view class="calendar_top">
+        <image bindtap="bindPrevMonthTap" class="calendar_prevnext prev" src="../imgs/calendar_prev.png"></image>
+        <picker bindchange="bindDateChange" class="calendar_picker" end="2049-12-31" mode="date" start="1901-01-01" value="{{selectedDate}}">
+            <view class="calendar_title">{{title}}</view>
+        </picker>
+        <image bindtap="bindNextMonthTap" class="calendar_prevnext next" src="../imgs/calendar_next.png"></image>
+        <image bindtap="bindTodayTap" class="calendar_today" src="../imgs/calendar_today.png" wx:if="{{notToday}}"></image>
+    </view>
+    <view class="calendar_week_day">
+        <view class="calendar_weekend">日</view>
+        <view>一</view>
+        <view>二</view>
+        <view>三</view>
+        <view>四</view>
+        <view>五</view>
+        <view class="calendar_weekend">六</view>
+    </view>
+    <view class="grids">
+        <block wx:for="{{grids}}" wx:key="{{item}}">
+            <view class="gridRowLine" wx:if="{{index%7==0}}"></view>
+            <template is="grid" data="{{...item}}"></template>
+        </block>
+    </view>
+</view>
+<view class="day_info">
+    <view bindtap="bindDayViewTap" class="day_info_border">
+        <view class="day-par abc-flex-x-start">
+            <view class="day_left">
+              <text class="day_info_text_big">{{dayInfo.date_day}}</text>
+            </view>
+
+            <view class="day_right abc-flex-y-center" style="align-items: flex-start;">
+              <view class="day_info_date">{{dayInfo.dateInfo}}</view>
+              <view class="day_info_gz">{{dayInfoGanzhi}}</view>
+            </view>
+
+            <view class="go-detail abc-img">
+              <image src="../imgs/next-detail.png"></image>
+            </view>
+        </view>
+
+        <view>
+            <view class="day_info_yiji" wx:if="{{yi}}">
+                <image class="day_info_yiji_icon" src="../imgs/calendar_yi.png"></image>
+                <text class="day_info_almanac_yi">{{yi}}</text>
+            </view>
+
+            <view class="day_info_yiji" wx:if="{{ji}}">
+                <image class="day_info_yiji_icon" src="../imgs/calendar_ji.png"></image>
+                <text class="day_info_almanac_ji">{{ji}}</text>
+            </view>
+        </view>
+
+
+
+
+        <view catchtap="{{bindTrafficViewTap}}" class="day_info_date">
+            <text class="day_info_text">{{limitinfo}}</text>
+        </view>
+    </view>
+</view>
+<image bindtap="toList" class="schedule-entry" src="../imgs/schedule_entry.png">日程列表</image>
+
+<view class="index_share abc-flex-y-center">
+  <button class="abc-img" openType="share">
+      <image class="" src="../imgs/index-share.png"></image>
+  </button>
+</view>

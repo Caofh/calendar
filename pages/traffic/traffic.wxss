@@ -1,0 +1,195 @@
+.wa {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    color: #444;
+}
+
+#date {
+    text-align: center;
+    font-size: 15px;
+    color: #434343;
+    line-height: 15px;
+    margin: 25px 0 20px;
+}
+
+.limit-main {
+    margin: 0 16%;
+    background-color: #fed8d8;
+    border-radius: 6px 6px 6px 6px;
+}
+
+.limit-main.noLimit {
+    background-color: #cde8e0;
+}
+
+.limit-main.single {
+    margin: 0 32%;
+}
+
+.tip {
+    text-align: center;
+    color: #fe8e96;
+    font-size: 13px;
+    line-height: 29px;
+}
+
+.tip.noLimit {
+    color: #7ed0b8;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 6em;
+    margin: 7rpx 5rpx 0rpx 5rpx;
+    padding-bottom: 7px;
+}
+
+.num {
+    text-align: center;
+    flex: 1;
+    background-color: #f36e76;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 2px 2px 3px 0 rgba(0,0,0,.2);
+    color: white;
+    position: relative;
+}
+
+.num.noLimit {
+    background-color: #6cc6b1;
+}
+
+.num1 {
+    margin: 0rpx 2rpx 0rpx 8rpx;
+}
+
+.single .num1 {
+    margin: 0rpx 6rpx 0rpx 6rpx;
+}
+
+.num2 {
+    margin: 0rpx 8rpx 0rpx 2rpx;
+}
+
+.single .num2 {
+    display: none;
+}
+
+.tt {
+    width: 100%;
+    height: 157rpx;
+    position: absolute;
+    top: 2rpx;
+    background: linear-gradient(rgba(255,255,255,0),rgba(255,255,255,.15));
+    border-bottom: solid 1px rgba(255,255,255,.2);
+}
+
+.tt2 {
+    line-height: 315rpx;
+}
+
+.location {
+    margin-top: 20rpx;
+    text-align: center;
+}
+
+.location_text {
+    height: 36rpx;
+    display: inline-block;
+    background: url(http://www.365rili.com/pages/limitline/images/location.png) no-repeat left top;
+    background-size: 15px 18px;
+    color: #434343;
+    font-size: 15px;
+    line-height: 19px;
+    padding-left: 24px;
+}
+
+.otherInfo {
+    color: #434343;
+    font-size: 15px;
+    line-height: 15px;
+    margin-top: 20px;
+}
+
+.otherInfo view {
+    background-image: url(http://www.365rili.com/pages/limitline/images/number.png);
+    background-repeat: no-repeat;
+    background-size: 14px 200px;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    vertical-align: bottom;
+    line-height: 15px;
+    margin-left: 3px;
+}
+
+.label {
+    margin: 44px 17px 0;
+    text-align: left;
+    color: #f46b73;
+    font-size: 13px;
+    height: 13px;
+    line-height: 13px;
+    border-top: dashed 1px #d6dce1;
+    position: relative;
+}
+
+.label text {
+    padding-right: 17px;
+    background-color: #fff;
+    position: relative;
+    top: -6px;
+}
+
+.content {
+    margin: 5px 17px 0;
+    text-align: Justify;
+    line-height: 24px;
+    font-size: 15px;
+}
+
+.otherInfo .n_none {
+    display: none;
+}
+
+.n_1 {
+    background-position: 0 -3px;
+}
+
+.n_2 {
+    background-position: 0 -23px;
+}
+
+.n_3 {
+    background-position: 0 -43px;
+}
+
+.n_4 {
+    background-position: 0 -63px;
+}
+
+.n_5 {
+    background-position: 0 -83px;
+}
+
+.n_6 {
+    background-position: 0 -103px;
+}
+
+.n_7 {
+    background-position: 0 -123px;
+}
+
+.n_8 {
+    background-position: 0 -143px;
+}
+
+.n_9 {
+    background-position: 0 -163px;
+}
+
+.n_0 {
+    background-position: 0 -183px;
+}

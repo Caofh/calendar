@@ -1,0 +1,24 @@
+<view class="container">
+    <scroll-view scrollY bindscroll="onScroll" bindscrolltolower="toLower" bindscrolltoupper="toUpper" class="scroll" scrollIntoView="{{toView}}">
+        <view class="group-item" id="{{group.viewid}}" wx:for="{{scheduleList}}" wx:for-item="group" wx:key="{{group.time}}">
+            <view class="date">
+                <text>{{group.display_time}}</text>
+                <text class="week">{{group.week}}</text>
+            </view>
+            <view class="content">
+                <view bindtap="onSchedule" class="detail" data-item="{{item}}" wx:for="{{group.list}}" wx:key="{{item.start_time + (item.birthId ? item.birthId  : item.uuid)}}">
+                    <view style="display:flex;flex-direction:row">
+                        <image class="birth" src="{{item.note=='[纪念日]'?'../imgs/notes.png':'../imgs/birth.png'}}" wx:if="{{item.birthId}}"></image>
+                        <text class="stext {{item.birthId?'stext-with-img':''}}">{{item.birthId?item.birthText:item.text}}</text>
+                    </view>
+                    <text class="sdesc">{{item.displayTime}}{{item.extend.sCalName?'　　来自：'+item.extend.sCalName:''}}</text>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+    <view bindtap="onReload" class="failed" style="justify-content:center;align-items:center;width:100%;height:100%;position:fixed;background-color:#fff;display:flex;flex-direction:column;" wx:if="{{failed}}">
+        <image mode="widthFix" src="../imgs/failed.png" style="width:136rpx;height:148rpx;"></image>
+        <text style="color:#7e7d7d;font-size:30rpx;margin-top:66rpx;">页面加载失败</text>
+        <text style="color:#35adec;font-size:30rpx;margin-top:16rpx;text-decoration:underline;">请点击重试</text>
+    </view>
+</view>

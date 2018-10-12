@@ -1,0 +1,360 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10rpx;
+    padding-bottom: 40rpx;
+    box-sizing: border-box;
+    background: #FFEAC1;
+}
+
+.dateInfo {
+    color: #327E6C;
+    font-size: 32rpx;
+    text-align: center;
+    margin-top: 38rpx;
+    margin-bottom: 40rpx;
+    display: flex;
+    flex-direction: column;
+}
+
+.year-month {
+  color: #000;
+}
+
+.dateInfo-date {
+    margin-top:13rpx;
+    margin-bottom:20rpx;
+    font-size:60rpx;
+    font-weight:bold;
+    line-height:180rpx;
+    color:#f71;
+    height:180rpx;
+}
+
+.dateInfo-nongli {
+    line-height: 24px;
+    color: #000;
+}
+
+.border {
+    margin: 0 17px 10px;
+}
+
+.yijiContainer {
+    box-sizing: border-box;
+    /*border-bottom: solid 1px rgba(151,151,151,.14);*/
+    border-bottom: solid 1px #fff;
+    margin-left: 34rpx;
+    margin-right: 34rpx;
+}
+
+.yiContainer {
+    display: flex;
+    flex-direction: row;
+    padding: 0 0 15px 0;
+    box-sizing: border-box;
+    line-height: 16px;
+}
+
+.jiContainer {
+    display: flex;
+    flex-direction: row;
+    padding: 0 0 30rpx 0;
+    box-sizing: border-box;
+    line-height: 16px;
+}
+
+.yijiImage {
+    height: 64rpx;
+    width: 64rpx;
+    min-width: 64rpx;
+    min-height: 64rpx;
+}
+
+.yijiText-yi {
+    margin-top: 4rpx;
+    margin-left: 28rpx;
+    font-size: 28rpx;
+    color: #327C6C;
+    line-height: 36rpx;
+}
+.yijiText-ji {
+    margin-top: 4rpx;
+    margin-left: 28rpx;
+    font-size: 28rpx;
+    color: #BB0A08;
+    line-height: 36rpx;
+}
+
+.zhushenContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    margin-top: 28rpx;
+    margin-left: 38rpx;
+    margin-right: 34rpx;
+    border-bottom: solid 1px rgba(151,151,151,.14);
+    padding-bottom:28rpx;
+}
+
+.zhushenTitle {
+    color: #E8C026;
+    font-size: 28rpx;
+    display: block;
+    text-align: center;
+}
+
+.fangweiContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.fangweiColumn {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    flex: 1;
+    text-align: center;
+}
+
+.fangweiText {
+    padding-top: 10rpx;
+    font-size: 24rpx;
+    color: #444;
+}
+
+.xingxiuContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    box-sizing: border-box;
+    text-align: center;
+    align-items: center;
+    margin-left: 20rpx;
+    margin-right: 20rpx;
+    border-top: solid 1px rgba(151,151,151,.14);
+    padding-top: 15rpx;
+}
+
+.xingxiuSideContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    flex: 2;
+    text-align: center;
+    align-items: center;
+}
+
+.xingxiuSideUpContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    text-align: center;
+    padding-left: 4rpx;
+    padding-right: 4rpx;
+    padding-top: 10rpx;
+    padding-bottom: 10rpx;
+}
+
+.xingxiuSideDownContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    text-align: center;
+    padding-left: 4rpx;
+    padding-right: 4rpx;
+    padding-top: 10rpx;
+    padding-bottom: 10rpx;
+}
+
+.xingxiuSideLine {
+    height: 1px;
+    width: 80%;
+    box-sizing: border-box;
+    border-bottom: solid 1px rgba(151,151,151,.14);
+}
+
+.xingxiuCenterContainer {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    flex: 3;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-left: solid 1px rgba(151,151,151,.14);
+    border-right: solid 1px rgba(151,151,151,.14);
+    padding-left: 10rpx;
+    padding-right: 10rpx;
+    padding-top: 40rpx;
+    padding-bottom: 40rpx;
+}
+
+.xingxiuText {
+    font-size: 20rpx;
+    color: #444;
+    margin-top: 10rpx;
+}
+
+.jishiContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    box-sizing: border-box;
+    text-align: center;
+    align-items: center;
+    flex: 1;
+}
+
+.jishiTitleContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    box-sizing: border-box;
+    text-align: center;
+    align-items: center;
+    padding-left: 20rpx;
+    padding-right: 20rpx;
+    padding-bottom: 10rpx;
+}
+
+.jishiTitleTime {
+    flex: 5;
+    text-align: left;
+}
+
+.jishiTitleTimeText {
+    color: #9A813C;
+    font-size: 28rpx;
+    text-align: left;
+}
+
+.jishiTitleContent {
+    color: #E8C026;
+    font-size: 28rpx;
+    flex: 2;
+}
+
+.jishiItemContainer {
+    width: 100%;
+}
+
+.jishiItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    box-sizing: border-box;
+    text-align: center;
+    align-items: center;
+    border-top: solid 1px rgba(151,151,151,.14);
+    margin-left: 6rpx;
+    margin-right: 4rpx;
+    padding-left: 20rpx;
+    padding-right: 20rpx;
+    padding-top: 10rpx;
+    padding-bottom: 10rpx;
+}
+
+.jishiSelected .jishiItem {
+    background: #F5F0EA;
+}
+
+.jishiTimeContainer {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    flex: 5;
+}
+
+.jishiText {
+    white-space: nowrap;
+    font-size: 24rpx;
+    color: #444;
+    flex: 2;
+}
+
+.jixiongText {
+    white-space: nowrap;
+    font-size: 24rpx;
+    color: #444;
+    flex: 2;
+}
+
+.isJi .jixiongText {
+    color: #327e6c;
+}
+
+.jishiNameText {
+    white-space: nowrap;
+    font-size: 24rpx;
+    color: #444;
+    text-align: left;
+}
+
+.jishiTimeText {
+    white-space: nowrap;
+    color: #ADADAD;
+    font-size: 24rpx;
+    margin-left: 10rpx;
+}
+
+.box {
+    margin-bottom: 24rpx;
+    width: 100%;
+    flex: 1;
+}
+
+.boxInner {
+    background-size: 100% auto;
+    min-height: 100rpx;
+    padding: 0 0;
+    margin: 0 17px;
+}
+
+
+.buttonLeft {
+    position: absolute;
+    width: 82rpx;
+    height: 82rpx;
+    background: url(http://www.365rili.com/third_cooperation/qqgroup/images/huangli/prev.png);
+    background-size: 62rpx 62rpx;
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 140rpx;
+    left: 24rpx;
+    padding: 10rpx;
+}
+
+.buttonRight {
+    position: absolute;
+    width: 82rpx;
+    height: 82rpx;
+    background: url(http://www.365rili.com/third_cooperation/qqgroup/images/huangli/next.png);
+    background-size: 62rpx 62rpx;
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 140rpx;
+    right: 24rpx;
+    padding: 10rpx;
+}
+
+.todayButton {
+    position: absolute;
+    right: 34rpx;
+    top: 40rpx;
+    font-size: 30rpx;
+    color: #fff;
+    background-color: #f71;
+    border-radius: 10rpx;
+    padding: 10rpx 20rpx;
+}

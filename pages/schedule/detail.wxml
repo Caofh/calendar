@@ -1,0 +1,78 @@
+<view class="container" wx:if="{{schedule}}">
+    <view class="top" wx:if="{{!on&&!isOwner}}">
+        <image class="header" mode="aspectFill" src="{{ownerHeader}}"></image>
+        <text class="nick">{{inviter}}</text>
+    </view>
+    <view class="top2" wx:else>
+        <image class="header small" mode="aspectFill" src="{{ownerHeader}}"></image>
+        <view wx:if="{{lastEditor}}">
+            <text class="inviter">{{lastEditor}}</text>
+            <text class="editor">{{personal?'创建者':'最近编辑者'}}</text>
+        </view>
+    </view>
+    <text selectable class="title {{!on&&!isOwner?'two-line':''}}">{{schedule.title}}</text>
+    <view class="item">
+        <image class="icon" mode="widthFix" src="../imgs/s_time.png"></image>
+        <text class="item-text">{{schedule.timeStr}}</text>
+    </view>
+    <view class="item" wx:if="{{schedule.description}}">
+        <image class="icon" mode="widthFix" src="../imgs/s_note.png"></image>
+        <text class="item-text {{!on&&!isOwner?'two-line':''}}">{{schedule.description}}</text>
+    </view>
+    <view bindtap="onUrl" class="item" data-url="{{schedule.url}}" wx:if="{{schedule.url}}">
+        <image class="icon" mode="widthFix" src="../imgs/s_url.png"></image>
+        <text class="item-text {{!on&&!isOwner?'two-line':''}}">{{schedule.url}}</text>
+    </view>
+    <view class="item" wx:if="{{schedule.extend.pics.length}}">
+        <image class="icon" mode="widthFix" src="../imgs/s_pics.png"></image>
+        <view class="pic-imgs">
+            <image bindtap="onPic" class="s-img" data-url="http://cocoimg.365rili.com/schedule_pics/default/{{item}}" mode="scaleToFill" src="http://cocoimg.365rili.com/schedule_pics/default/{{item}}" wx:for="{{schedule.extend.pics}}" wx:key="{{item}}"></image>
+        </view>
+    </view>
+    <view bindtap="onLocation" class="item" data-url="{{schedule.location}}" wx:if="{{schedule.location}}">
+        <image class="icon" mode="widthFix" src="../imgs/s_loc.png"></image>
+        <text class="item-text {{!on&&!isOwner?'two-line':''}}">{{schedule.displayLocation}}</text>
+    </view>
+    <view class="item" wx:if="{{schedule.alarm}}">
+        <image class="icon" mode="widthFix" src="../imgs/s_alarm.png"></image>
+        <text class="item-text {{!on&&!isOwner?'two-line':''}}">{{schedule.displayAlarm}}</text>
+    </view>
+    <view class="item" wx:if="{{schedule.repeatType}}">
+        <image class="icon" mode="widthFix" src="../imgs/s_repeat.png"></image>
+        <text class="item-text {{!on&&!isOwner?'two-line':''}}">{{schedule.displayRepeat}}</text>
+    </view>
+    <block wx:if="{{followers.count>0}}">
+        <view class="item">
+            <image class="icon" mode="widthFix" src="../imgs/s_follower.png"></image>
+            <text class="item-text">已有{{followers.count}}人参与此日程</text>
+        </view>
+        <view class="f-view">
+            <image class="f-img" mode="scaleToFill" src="{{item.head}}" wx:for="{{followers.followers}}" wx:key="{{item.u}}"></image>
+        </view>
+    </block>
+    <view class="item" wx:if="{{schedule.extend.sCalName||schedule.calendar.title}}">
+        <image class="icon" mode="widthFix" src="../imgs/s_cal.png"></image>
+        <text class="item-text {{!on&&!isOwner?'two-line':''}}" wx:if="{{!isGroupCalendar&&primay_cid!=schedule.calendarId}}">来自{{inviter}}的邀请</text>
+        <text class="item-text {{!on&&!isOwner?'two-line':''}}" wx:else>{{schedule.extend.sCalName||schedule.calendar.title}}</text>
+    </view>
+    <view style="width:100%;height:50rpx;margin-top:40rpx;border-top: solid 1rpx #dfdfdf;"></view>
+    <view bindtap="onJoin" class="join buttons" wx:if="{{!on}}">
+    参加日程
+  </view>
+    <view bindtap="onExit" class="exit buttons" wx:if="{{on&&(!isOwner||isGroupCalendar)}}">
+    退出日程
+  </view>
+    <view bindtap="onDelete" class="delete buttons" wx:if="{{isOwner}}">
+    删除日程
+  </view>
+    <text bindtap="toIndex" class="to-index">去日程列表看看 ></text>
+    <block wx:if="{{!isWxFollowed}}">
+        <label class="to-index2" for="cb">关注公众号，获得提醒 ></label>
+        <button hidden id="cb" openType="contact"></button>
+    </block>
+    <view bindtap="onReload" class="failed" style="justify-content:center;align-items:center;width:100%;height:100%;position:fixed;background-color:#fff;display:flex;flex-direction:column;" wx:if="{{failed}}">
+        <image mode="widthFix" src="../imgs/failed.png" style="width:136rpx;height:148rpx;"></image>
+        <text style="color:#7e7d7d;font-size:30rpx;margin-top:66rpx;">页面加载失败</text>
+        <text style="color:#35adec;font-size:30rpx;margin-top:16rpx;text-decoration:underline;">请点击重试</text>
+    </view>
+</view>

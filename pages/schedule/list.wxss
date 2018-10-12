@@ -1,0 +1,94 @@
+.container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f3f5f6;
+}
+
+.group-item {
+    width: 100%;
+    padding-right: 30rpx;
+    box-sizing: border-box;
+    padding-top: 30rpx;
+    padding-bottom: 30rpx;
+    display: flex;
+    flex-direction: row;
+}
+
+.detail {
+    background-color: #fff;
+    border-radius: 12rpx;
+    margin-top: 20rpx;
+    padding: 30rpx;
+    box-sizing: border-box;
+}
+
+.content .detail:first-child {
+    margin-top: 0rpx;
+}
+
+.date {
+    padding-top: 30rpx;
+    display: block;
+    width: 16%;
+    color: #000;
+    font-size: 26rpx;
+}
+
+.content {
+    width: 84%;
+    display: flex;
+    flex-direction: column;
+}
+
+.scroll {
+    width: 100%;
+    height: 100%;
+}
+
+.stext {
+    display: block;
+    color: #000;
+    font-size: 34rpx;
+    line-height: 50rpx;
+    word-wrap: break-word;
+    width: 100%;
+}
+
+.stext-with-img {
+    width: -webkit-calc(100% - 52rpx);
+}
+
+.sdesc {
+    margin-top: 18rpx;
+    color: #828282;
+    font-size: 26rpx;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.week {
+    font-size: 26rpx;
+    color: #b0b0b0;
+}
+
+.date text {
+    display: block;
+    text-align: center;
+}
+
+.inner-view {
+    width: 100%;
+    height: auto;
+}
+
+.birth {
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 12rpx;
+    margin-top: 7rpx;
+}

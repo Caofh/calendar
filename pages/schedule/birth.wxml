@@ -1,0 +1,24 @@
+<view class="container" wx:if="{{birth}}">
+    <image class="{{birth.note=='[纪念日]'?'note_img':'birthday_img'}}" src="{{birth.note=='[纪念日]'?'../imgs/notes.png':'../imgs/birthday_img.jpg'}}"></image>
+    <view class="birth_name_sex">
+        <text class="name">{{birth.name}}</text>
+        <text class="sex {{birth.sex==1?'woman':'man'}}" wx:if="{{birth.sex<2&&birth.note!='[纪念日]'}}">{{birth.sex==1?'女':'男'}}</text>
+    </view>
+    <view class="birthday_txt" wx:if="{{birth.age==0&&birth.dis==0}}">{{birth.note=='[纪念日]'?'今天纪念日':'生日到了'}}</view>
+    <view class="birthday_txt" wx:elif="{{birth.age!=0&&birth.dis!=0}}">距<text class="highlight">{{birth.age}}</text>{{birth.note=='[纪念日]'?'周年':'岁生日'}}还有<text class="highlight">{{birth.dis}}</text>天</view>
+    <view class="birthday_txt" wx:elif="{{birth.age==0}}">距{{birth.note=='[纪念日]'?'纪念日':'生日'}}还有<text class="highlight">{{birth.dis}}</text>天</view>
+    <view class="birthday_txt" wx:else>
+        <text class="highlight">{{birth.age}}</text>{{birth.note=='[纪念日]'?'周年':'岁生日到了'}}</view>
+    <view class="{{birth.note=='[纪念日]'?'note_time':'birthday_time'}}">{{birth.displayBirth}}</view>
+    <view class="{{birth.note=='[纪念日]'?'note_remind':'birthday_remind'}}">
+        <text class="alarm-text" wx:for="{{birth.alarmList}}" wx:key="{{item.id}}">
+    {{item.text}}
+    </text>
+    </view>
+    <text bindtap="toIndex" class="to-index">去日程列表看看 ></text>
+    <view bindtap="onReload" class="failed" style="justify-content:center;align-items:center;width:100%;height:100%;position:fixed;background-color:#fff;display:flex;flex-direction:column;" wx:if="{{failed}}">
+        <image mode="widthFix" src="../imgs/failed.png" style="width:136rpx;height:148rpx;"></image>
+        <text style="color:#7e7d7d;font-size:30rpx;margin-top:66rpx;">页面加载失败</text>
+        <text style="color:#35adec;font-size:30rpx;margin-top:16rpx;text-decoration:underline;">请点击重试</text>
+    </view>
+</view>

@@ -1,0 +1,328 @@
+page {
+    position: fixed;
+    height: 100%;
+    background-color: #FFEAC1;
+}
+
+.day_line {
+    position: absolute;
+    height: 100%;
+    margin-left: 25px;
+    border-left: 2px solid #d6dce1;
+    z-index: -1;
+}
+
+.calendar {
+    width: 100%;
+    background-color: #FFEAC1;
+}
+
+.calendar_top {
+    text-align: center;
+    padding: 10px 0 10px 0;
+    background:#000;
+    color:#fff;
+
+}
+
+.calendar_title {
+    font-size: 25px;
+    line-height: 25px;
+}
+
+.calendar_picker {
+    display: inline-block;
+}
+
+.calendar_prevnext {
+    width: 18px;
+    height: 18px;
+}
+.calendar_prevnext.next {
+    padding: 0 20rpx 0 120rpx;
+}
+.calendar_prevnext.prev {
+    padding: 0 120rpx 0 20rpx;
+}
+
+.calendar_today {
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    right: 15px;
+    top: 11px;
+}
+
+.calendar_week_day view {
+    flex: 1;
+    text-align: center;
+    font-size: 13px;
+    height: 40rpx;
+    line-height: 40rpx;
+    font-size: 30rpx;
+    color: #000;
+}
+
+.calendar_week_day {
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 0 8px;
+    margin-top: 20rpx;
+    margin-bottom: 10rpx;
+}
+
+.grids {
+    display: flex;
+    flex-flow: row wrap;
+    border-bottom: 0.5px solid #fff;
+    padding: 0 8px 20px 8px;
+}
+
+.grid {
+    flex: 1;
+    text-align: center;
+    height: 48px;
+    min-width: 14.2857%;
+    position: relative;
+}
+
+.grid-inner {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #fff;
+    margin: 6px auto 0;
+    border-radius: 20%;
+    position: relative;
+    background: #fff;
+}
+
+.gridRowLine {
+    width: 100%;
+}
+
+.solar_data {
+    font-size: 20px;
+    height: 20px;
+    line-height: 28px;
+    text-align: center;
+    vertical-align: bottom;
+    display: block;
+}
+
+.lunar_data {
+    overflow: hidden;
+    height: 20px;
+    line-height: 20px;
+    color: #565B5E;
+    opacity: 0.58;
+    font-size: 11px;
+    -webkit-transform: scale(.8);
+    text-align: center;
+    display: block;
+}
+
+.ondate .grid-inner {
+    border: solid 1px #FA9131;
+    background-color: #fff;
+}
+
+.selected .grid-inner {
+    border: solid 1px #FA9131;
+    background-color: #FA9131;
+}
+
+.selected .solar_data {
+    color: #fff;
+}
+
+.selected .lunar_data {
+    color: #fff;
+}
+
+.gray .solar_data {
+    color: #b2b2b2;
+}
+
+.gray .lunar_data {
+    color: #b2b2b2;
+}
+
+.vacation_icon {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    top: 2px;
+    left: 2px;
+}
+
+.day_info {
+    width: 100%;
+    padding-bottom: 60px;
+}
+
+.day_info_border {
+    /*margin-left: 25px;*/
+}
+
+.day_info_dot {
+    display: inline-block;
+    height: 8px;
+    width: 8px;
+    background-color: #d6dce1;
+    border: 3px solid #f7f8f9;
+    border-radius: 100%;
+    margin-left: -28px;
+    margin-top: 1px;
+}
+
+.day-par {
+  position: relative;
+  margin: 20rpx 0 20rpx 20rpx;
+}
+
+.day_left {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 10rpx;
+  background: #F5F0EA;
+  margin-right: 20rpx;
+}
+
+.day_right {
+  height: 100rpx;
+}
+
+.day_right .day_info_date {
+    font-size: 26rpx;
+    color: #2D2D2D;
+    margin-bottom: 10rpx;
+}
+
+.day_right .day_info_gz {
+    font-size: 24rpx;
+    color: #5C5C5C;
+}
+
+.go-detail {
+  position: absolute;
+  width: 50rpx;
+  height: 50rpx;
+  top: 25rpx;
+  right: 20rpx;
+}
+
+.day_left .day_info_text_big {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 60rpx;
+  color: #F5B711;
+}
+
+.day_info_yiji {
+    margin: 5px 10px 0px 20px;
+}
+
+.day_info_yiji_icon {
+    width: 50rpx;
+    height: 50rpx;
+    vertical-align: bottom;
+    margin-right: 10px;
+}
+
+.day_info_almanac_yi {
+    font-size: 15px;
+    color: #BD3F40;
+    line-height: 20px;
+    height: 20px;
+}
+.day_info_almanac_ji {
+    font-size: 15px;
+    color: #579878;
+    line-height: 20px;
+    height: 20px;
+}
+
+.action_buttons {
+    width: 100%;
+    background: #fff;
+    border-top: 1px solid #dddddd;
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.action_button {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+}
+
+.action_button:first-child:after {
+    content: '';
+    float: right;
+    width: 1px;
+    height: 22px;
+    background-color: #ddd;
+    margin-top: 14px;
+}
+
+.button_icon {
+    width: 22px;
+    height: 22px;
+    vertical-align: middle;
+}
+
+.button_text {
+    font-size: 15px;
+    color: #35adec;
+    line-height: 50px;
+    padding-left: 10px;
+}
+
+.schedule-entry {
+    display: none;
+    width: 132rpx;
+    height: 132rpx;
+    position: fixed;
+    bottom: 24rpx;
+    right: 24rpx;
+}
+
+.getAuth {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 999;
+}
+
+.index_share {
+  position: fixed;
+  right: 10rpx;
+  bottom: 20rpx;
+  width: 80rpx;
+  height: 80rpx;
+  background: #1296db;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2rpx #f0f0f0;
+  opacity: 0.6;
+  z-index:1000;
+}
+.index_share button {
+  width: 50rpx;
+  height: 50rpx;
+  background: #1296db;
+  border-radius: 50%;
+  border: 0;
+}
+.index_share button::after {
+  border: 0;
+}
