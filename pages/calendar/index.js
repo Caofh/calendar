@@ -47,7 +47,9 @@ Page({
   data: {
     yiji: {},
     limitinfo: "",
-    notToday: !1
+    notToday: !1,
+
+    userInfo: ''
   },
   currentGrid: 0,
   onLoad: function(path) {
@@ -61,6 +63,12 @@ Page({
       }
       save(para) // 统计首页分享数据，存入数据库
     }
+
+    // 设置用户基本信息
+    const userInfo = wx.getStorageSync('userinfo') || ''
+    this.setData({
+      userInfo: userInfo
+    })
 
   },
   setGrids: function(t) {
