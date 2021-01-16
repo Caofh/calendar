@@ -20,7 +20,7 @@
         <view class="calendar_weekend">六</view>
     </view>
     <view class="grids">
-        <block wx:for="{{grids}}" wx:key="{{item}}">
+        <block wx:for="{{grids}}" wx:key="item">
             <view class="gridRowLine" wx:if="{{index%7==0}}"></view>
             <template is="grid" data="{{...item}}"></template>
         </block>
@@ -38,7 +38,7 @@
               <view class="day_info_gz">{{dayInfoGanzhi}}</view>
             </view>
 
-            <view class="go-detail abc-img">
+            <view wx:if="{{false}}" class="go-detail abc-img">
               <image src="../imgs/next-detail.png"></image>
             </view>
         </view>

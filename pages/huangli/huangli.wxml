@@ -60,7 +60,7 @@
                     <text class="jishiTitleContent"> 喜神 </text>
                     <text class="jishiTitleContent"> 吉时 </text>
                 </view>
-                <template is="jishiItem" data="{{...item}}" wx:for="{{jishiarray}}"></template>
+                <template is="jishiItem" data="{{...item}}" wx:for="{{jishiarray}}" wx:key="*this"></template>
             </view>
         </view>
     </view>

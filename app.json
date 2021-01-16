@@ -1,16 +1,17 @@
 {
-    "pages": [
-        "pages/calendar/index",
-        "pages/huangli/huangli",
-        "pages/traffic/traffic",
-        "pages/schedule/list",
-        "pages/schedule/detail",
-        "pages/schedule/birth"
-    ],
-    "window": {
-        "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#000",
-        "navigationBarTitleText": "日历工具",
-        "navigationBarTextStyle": "white"
-    }
+  "pages": [
+    "pages/calendar/index",
+    "pages/huangli/huangli",
+    "pages/traffic/traffic",
+    "pages/schedule/list",
+    "pages/schedule/detail",
+    "pages/schedule/birth"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "日历工具",
+    "navigationBarTextStyle": "white"
+  },
+  "sitemapLocation": "sitemap.json"
 }

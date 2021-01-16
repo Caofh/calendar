@@ -4,103 +4,105 @@ import { request, setLoginUrl, extend, constants, login } from './sdk/index'
 
 App({
   rili: require("utils/common.js"),
-  onLaunch: function() {
+  onLaunch: function () {
     wx.getSystemInfo({
-      success: function(o) {
+      success: function (o) {
         this.iphonex = -1 != o.model.indexOf("iPhone X"), this.windowHeight = o.windowHeight,
           this.windowWidth = o.windowWidth;
       }.bind(this)
-    }), this.checkLogin(function() {
+    }), this.checkLogin(function () {
       o.getCitycode(!1, null);
     });
   },
-  checkLogin: function(o) {
+  checkLogin: function (o) {
     console.log("checking login status"), this.globalData.userInfo && this.globalData.xkey && this.globalData.sessionID ? (console.log("already logined"),
-    "function" == typeof o && o(this.globalData)) : (console.log("not logined"), wx.checkSession({
-      success: function() {
-        console.log("checkSession success"), this.getUserInfo(), console.log("global data"),
-          console.log(this.globalData), this.globalData.xkey && this.globalData.sessionID ? "function" == typeof o && o(this.globalData) : this.doLogin(o);
-      }.bind(this),
-      fail: function() {
-        console.log("checkSession fail"), this.doLogin(o);
-      }.bind(this)
-    }));
+      "function" == typeof o && o(this.globalData)) : (console.log("not logined"), wx.checkSession({
+        success: function () {
+          console.log("checkSession success"), this.getUserInfo(), console.log("global data"),
+            console.log(this.globalData), this.globalData.xkey && this.globalData.sessionID ? "function" == typeof o && o(this.globalData) : this.doLogin(o);
+        }.bind(this),
+        fail: function () {
+          console.log("checkSession fail"), this.doLogin(o);
+        }.bind(this)
+      }));
   },
-  doLogin: function(o) {
+  doLogin: function (o) {
     console.log("redo login"), console.log("do wx.login()"), wx.login({
-      fail: function(o) {
+      fail: function (o) {
         wx.showToast({
           title: "获取授权失败",
           icon: "loading",
           duration: 2e3
         });
       },
-      success: function(t) {
+      success: function (t) {
         console.log(t), console.log("get prelogin.do"), this.rili.load({
           url: "/wx/miniapp/prelogin.do",
           data: {
             code: t.code
           },
-          success: function(t) {
+          success: function (t) {
             console.log(t), "ok" == t.data.state && t.data.data.session && (this.globalData.sessionID = t.data.data.session,
               console.log("do wx.getUserInfo()"), wx.getUserInfo({
-              fail: function(t) {
-                "function" == typeof o && o(!1);
-              },
-              success: function(s) {
-                console.log(s), console.log("get login.do"), this.rili.load({
-                  url: "/wx/miniapp/login.do",
-                  method: "POST",
-                  data: {
-                    raw: s.encryptedData,
-                    iv: s.iv,
-                    session: t.data.data.session
-                  },
-                  success: function(t) {
-                    console.log(t), "ok" == t.data.state ? (this.globalData.userInfo = t.data, console.log(t.data),
-                      this.saveUserInfo(), this.getUserInfo(), "function" == typeof o && o(this.globalData)) : wx.showToast({
-                      icon: "none",
-                      title: "登录失败"
-                    });
-                  }.bind(this)
-                });
-              }.bind(this)
-            }));
+                fail: function (t) {
+                  "function" == typeof o && o(!1);
+                },
+                success: function (s) {
+                  console.log(s), console.log("get login.do"), this.rili.load({
+                    url: "/wx/miniapp/login.do",
+                    method: "POST",
+                    data: {
+                      raw: s.encryptedData,
+                      iv: s.iv,
+                      session: t.data.data.session
+                    },
+                    success: function (t) {
+                      console.log(t), "ok" == t.data.state ? (this.globalData.userInfo = t.data, console.log(t.data),
+                        this.saveUserInfo(), this.getUserInfo(), "function" == typeof o && o(this.globalData)) : wx.showToast({
+                          icon: "none",
+                          title: "登录失败"
+                        });
+                    }.bind(this)
+                  });
+                }.bind(this)
+              }));
           }.bind(this)
         });
       }.bind(this)
     });
   },
-  clearAuth: function() {
+  clearAuth: function () {
     this.globalData.userInfo = {}, this.saveUserInfo();
   },
-  saveUserInfo: function() {
+  saveUserInfo: function () {
     console.log("save"), console.log(this.globalData), wx.setStorageSync("userInfo", this.globalData.userInfo),
       wx.setStorageSync("cid", this.globalData.userInfo.primary_cid), wx.setStorageSync("xkey", this.globalData.userInfo["x-365-http-key"]),
       wx.setStorageSync("sessionID", this.globalData.sessionID);
   },
-  getUserInfo: function() {
+  getUserInfo: function () {
     console.log("getUserInfo"), this.globalData.userInfo = wx.getStorageSync("userInfo"),
       this.globalData.xkey = wx.getStorageSync("xkey"), this.globalData.sessionID = wx.getStorageSync("sessionID"),
       this.globalData.cid = wx.getStorageSync("cid"), this.userInfoReadyCallback ? (this.userInfoReadyCallback(),
-      console.log("hehehe")) : console.log("hahaha"), console.log("the data"), console.log(this.globalData);
+        console.log("hehehe")) : console.log("hahaha"), console.log("the data"), console.log(this.globalData);
   },
-  getHuangliByMonth: function(o, t) {
-    var s = [ o.getFullYear(), o.getMonth() + 1 ].join("-").replace(/(\D)(\d)(?=\D|$)/g, "$10$2").replace(/-/g, ""), e = wx.getStorageSync("hl" + s);
-    if (e) console.log("get huangli data cache is: " + (void 0 == e)), t(e); else {
-      wx.request({
-        url: "https://www.365rili.com/third_cooperation/qqgroup/yjdata/" + s + ".json",
-        header: {
-          "Content-Type": "application/json"
-        },
-        success: function(o) {
-          console.log("get huangli data online is: " + o), wx.setStorage({
-            key: "hl" + s,
-            data: o.data
-          }), t(o.data);
-        }
-      });
-    }
+  getHuangliByMonth: function (o, t) {
+    var s = [o.getFullYear(), o.getMonth() + 1].join("-").replace(/(\D)(\d)(?=\D|$)/g, "$10$2").replace(/-/g, ""), e = wx.getStorageSync("hl" + s);
+    // if (e) {
+    //   console.log("get huangli data cache is: " + (void 0 == e)), t(e);
+    // } else {
+    wx.request({
+      url: "https://www.365rili.com/third_cooperation/qqgroup/yjdata/" + s + ".json",
+      header: {
+        "Content-Type": "application/json"
+      },
+      success: function (o) {
+        console.log("get huangli data online is: " + o), wx.setStorage({
+          key: "hl" + s,
+          data: o.data
+        }), t(o.data);
+      }
+    });
+    // }
   },
 
 

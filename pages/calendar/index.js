@@ -6,14 +6,14 @@ import { requestApi } from '../../api'
 import { save } from '../../utils/dataCount'
 
 Page({
-  onShareAppMessage: function(res) {
+  onShareAppMessage: function (res) {
     let shareObj = {
       title: "日历工具",
       desc: "简单、好用的日历,农历、黄历",
       path: "/pages/calendar/index?type=share_index",
-      success: function () {},
-      fail: function () {},
-      complete: function () {}
+      success: function () { },
+      fail: function () { },
+      complete: function () { }
     }
 
     if (res.from === 'button') {
@@ -49,10 +49,14 @@ Page({
     limitinfo: "",
     notToday: !1,
 
-    userInfo: ''
+    userInfo: '',
+
+    yi: '',
+    ji: '',
+
   },
   currentGrid: 0,
-  onLoad: function(path) {
+  onLoad: function (path) {
     this.setGrids(o);
 
     // console.log(path)
@@ -71,7 +75,7 @@ Page({
     })
 
   },
-  setGrids: function(t) {
+  setGrids: function (t) {
     for (var e = new a.Calendar(t).getCalendarSundayFirstDate(), i = [], o = 0; o < 42; o++) i.push(this.getGridInfo(e, o));
     this.setData({
       grids: i,
@@ -82,20 +86,20 @@ Page({
       notToday: r.getFullYear() != n.getFullYear() || r.getMonth() != n.getMonth() || r.getDate() != n.getDate()
     }), this.getYiJiData(), this.getTrafficList();
   },
-  getTrafficList: function() {
+  getTrafficList: function () {
     r.format("yyyy-MM-dd");
   },
-  genTraffic: function(t) {
+  genTraffic: function (t) {
     console.log("genTraffic:" + t);
     var e = "无限行信息", a = "bindTrafficViewNone";
     void 0 == t ? e = "无限行信息" : t.number ? (e = "限行尾号：" + t.number.join("，"), a = "bindTrafficViewTap") : t.desc && (e = t.desc,
       a = "bindTrafficViewTap"), this.setData({
-      limitinfo: e
-    }), this.setData({
-      bindTrafficViewTap: a
-    });
+        limitinfo: e
+      }), this.setData({
+        bindTrafficViewTap: a
+      });
   },
-  getDayInfo: function(e) {
+  getDayInfo: function (e) {
     var i = new a.Lunar(e);
     return {
       date: e.format("yyyy年MM月dd日"),
@@ -103,11 +107,11 @@ Page({
       dateInfo: t.getChineseWeekday(e) + " 农历 " + i.lMonth + "月" + i.lDate
     }
   },
-  getDayGanzhiInfo: function(t) {
+  getDayGanzhiInfo: function (t) {
     var e = new a.Lunar(t);
     return e.gzYear + "年[" + e.animal + "年] " + e.gzMonth + "月 " + e.gzDate + "日";
   },
-  getGridInfo: function(t, e) {
+  getGridInfo: function (t, e) {
     var s = new Date(t);
     s.setDate(s.getDate() + e);
     var d = new a.Lunar(s), g = {
@@ -122,31 +126,31 @@ Page({
     };
     return g.isSelected && (this.currentGrid = e), g;
   },
-  gotoDate: function(t) {
+  gotoDate: function (t) {
     o = new Date(t), r = new Date(t), this.setGrids(o);
   },
-  gotoPrevNextMonth: function(t) {
+  gotoPrevNextMonth: function (t) {
     t ? o.setMonth(o.getMonth() + 1) : o.setMonth(o.getMonth() - 1), o.setDate(1), r = o.getFullYear() == n.getFullYear() && o.getMonth() == n.getMonth() ? new Date(n) : new Date(o),
       this.setGrids(o);
   },
-  bindDayViewTap: function() {
-    wx.navigateTo({
-      url: "../huangli/huangli?date=" + r.format("yyyy-MM-dd")
-    });
+  bindDayViewTap: function () {
+    // wx.navigateTo({
+    //   url: "../huangli/huangli?date=" + r.format("yyyy-MM-dd")
+    // });
   },
-  bindTrafficViewTap: function() {
-    e.getCitycode(!0, function(t) {
+  bindTrafficViewTap: function () {
+    e.getCitycode(!0, function (t) {
       wx.navigateTo({
         url: "../traffic/traffic?date=" + r.format("yyyy-MM-dd") + "&citycode=" + t
       });
     });
   },
-  bindTrafficViewNone: function() {},
-  getYiJiData: function() {
+  bindTrafficViewNone: function () { },
+  getYiJiData: function () {
     var t = r.format("yyyyMMdd"), e = this.data.yiji[t];
     void 0 == e ? s.getHuangliByMonth(r, this.yiJiCallback) : this.bindYiJi(e);
   },
-  yiJiCallback: function(t) {
+  yiJiCallback: function (t) {
     if (t) {
       this.setData({
         yiji: t
@@ -155,39 +159,39 @@ Page({
       this.bindYiJi(e);
     }
   },
-  bindYiJi: function(t) {
+  bindYiJi: function (t) {
     this.setData({
       yi: t.yi,
       ji: t.ji
     });
   },
-  bindGridTap: function(t) {
+  bindGridTap: function (t) {
     if (this.currentGrid != t.currentTarget.dataset.i) {
       var e = new Date(t.currentTarget.dataset.date);
       e.getMonth() == o.getMonth() && (this.data.grids[this.currentGrid].isSelected = !1,
         this.currentGrid = t.currentTarget.dataset.i, this.data.grids[this.currentGrid].isSelected = !0,
         r = e, this.setData({
-        grids: this.data.grids,
-        selectedDate: r.format("yyyy-MM-dd"),
-        dayInfo: this.getDayInfo(r),
-        dayInfoGanzhi: this.getDayGanzhiInfo(r),
-        notToday: r.getFullYear() != n.getFullYear() || r.getMonth() != n.getMonth() || r.getDate() != n.getDate()
-      }), this.getYiJiData(), this.getTrafficList());
+          grids: this.data.grids,
+          selectedDate: r.format("yyyy-MM-dd"),
+          dayInfo: this.getDayInfo(r),
+          dayInfoGanzhi: this.getDayGanzhiInfo(r),
+          notToday: r.getFullYear() != n.getFullYear() || r.getMonth() != n.getMonth() || r.getDate() != n.getDate()
+        }), this.getYiJiData(), this.getTrafficList());
     }
   },
-  bindPrevMonthTap: function() {
+  bindPrevMonthTap: function () {
     this.gotoPrevNextMonth(!1);
   },
-  bindNextMonthTap: function() {
+  bindNextMonthTap: function () {
     this.gotoPrevNextMonth(!0);
   },
-  bindTodayTap: function() {
+  bindTodayTap: function () {
     r.getFullYear() == n.getFullYear() && r.getMonth() == n.getMonth() && r.getDate() == n.getDate() || this.gotoDate(n);
   },
-  bindDateChange: function(t) {
+  bindDateChange: function (t) {
     this.gotoDate(new Date(t.detail.value));
   },
-  toList: function() {
+  toList: function () {
     wx.navigateTo({
       url: "/pages/schedule/list"
     });
